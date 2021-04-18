@@ -80,7 +80,7 @@ $border-radius: 3px;
           }
         }
         .tag-placeholder-wrap {
-          flex: 1;
+          flex: initial;
           display: flex;
           @media screen and (max-width: 800px) {
             width: 100%;
