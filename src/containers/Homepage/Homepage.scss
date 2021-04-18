@@ -1,0 +1,105 @@
+$border-radius: 3px;
+
+.homepage-container {
+  .main-container {
+    width: 90%;
+    margin: auto;
+    margin-top: 100px;
+    .search-wrap {
+      text-align: right;
+      > div {
+        position: relative;
+        display: inline-flex;
+        .search-icon {
+          position: absolute;
+          top: 7px;
+          left: 10px;
+          svg {
+            height: 20px;
+          }
+        }
+        input {
+          padding-left: 35px;
+          font-size: 16px;
+          height: 30px;
+        }
+      }
+    }
+    .data-list-wrap {
+      font-size: 14px;
+      margin-top: 20px;
+      .data-wrap {
+        background-color: #ebebeb;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 6px;
+        display: flex;
+        flex-direction: row;
+        .name-wrap {
+          font-size: 14px;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          .text-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            flex: 1;
+          }
+          .text-date {
+            opacity: 0.8;
+          }
+        }
+        .tags-list {
+          display: flex;
+          flex-wrap: wrap;
+          flex: 1;
+          justify-content: flex-end;
+          align-content: baseline;
+          .tag-wrap {
+            margin: 5px 8px 5px 0;
+            max-height: 20px;
+            padding: 5px 30px 5px 9px;
+            background-color: #4879ba;
+            color: white;
+            border-radius: 8px;
+            position: relative;
+            .tag-wrap-text {
+
+            }
+            .tag-wrap-svg {
+              position: absolute;
+              right: 2px;
+              top: 5px;
+              svg {
+                height: 16px;
+              }
+            }
+            &.matching-search {
+              background-color: orange;
+            }
+          }
+        }
+        .tag-placeholder {
+          margin-right: 8px;
+          input {
+            border-radius: $border-radius;
+            border: 1px;
+            padding: 8px;
+            height: 19px;
+            border-color: black;
+          }
+        }
+        .tag-add-button {
+          button {
+            border-radius: $border-radius;
+            border: 0;
+            height: 35px;
+            width: 90px;
+            color: white;
+            background-color: #0b7372;
+          }
+        }
+      }
+    }
+  }
+}

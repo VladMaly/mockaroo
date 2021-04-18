@@ -1,0 +1,102 @@
+@use "../../styles/colors.scss" as themeColors; // themeColors.$passive
+@import "../../styles/fluid.scss"; // @include fluid-type-range(500px, 1024px, "margin-top", 70px, 90px);
+
+.navigation-container {
+  h1 {
+    display: none;
+  }
+  * {
+    outline: none;
+  }
+  .header-container {
+    // display: flex;
+    // margin-bottom: 100px;
+    padding: 30px 22px 12px;
+    // background-color: #90a4ae;
+    // background-color: #263238;
+    // color: white;
+    // background-color: white;
+    // color: themeColors.$passive;
+    .title-logo {
+      font-size: 35px;
+      text-align: center;
+      // flex: 0;
+      // max-width: 120px;
+      > div {
+        // display: flex;
+        width: 100%;
+        text-align: center;
+        // max-width: 200px;
+        .title-logo-main {
+          font-size: 60px;
+          // margin-top: -9px;
+          img {
+            object-fit: contain;
+            max-width: 100%;
+          }
+        }
+        .title-logo-secondary {
+          font-size: 22px;
+          text-align: center;
+          font-weight: bold;
+        }
+      }
+    }
+    .header-secondary {
+      flex: 1;
+      text-align: right;
+      // display: flex;
+      font-size: 14px;
+      @media screen and (max-width: 700px) {
+        display: none;
+      }
+      div {
+        max-width: 350px;
+        margin-right: 0 !important;
+        margin-left: auto;
+        // margin-top: 10px;
+        // max-width: 200px;
+        > * {
+          margin: 0;
+          // font-weight: initial;
+          font-weight: bold;
+          @media screen and (max-width: 500px) {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+$backgroundColor: whitesmoke; 
+// $backgroundColor: #d5ecff; 
+// $backgroundColor: #edf7ff; 
+// $backgroundColor: #263238; 
+// $backgroundColor: #030612; 
+
+// $backgroundColor: #d1feff; 
+body {
+  background: $backgroundColor;
+  // color: white;
+  // background: -webkit-linear-gradient(to left, #ef629f, #eecda3);
+  // background: linear-gradient(to left, #ef629f, #eecda3);
+  animation-name: drop;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-duration: 3s;
+  color: black;
+
+  @keyframes drop {
+    0% {
+      background-color: white;
+      // color: black;
+    }
+    100% {
+      background-color: $backgroundColor;
+      // color: white;
+      // background-color: #d5ecff;
+    }
+  }
+}
+

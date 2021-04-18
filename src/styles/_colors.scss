@@ -1,0 +1,20 @@
+$primary: #2196f3;
+$secondary: #4caf50;
+$passive: #455a64;
+$accent: #e64a19;
+
+// Export variables for javascript files
+:export {
+  primary: $primary;
+  secondary: $secondary;
+  accent: $accent;
+}
+
+// App colors:
+// - Pink #e91e63, #db3462
+// - Light Blue (More leeway) #2196f3
+// - Green #388e3c
+// - Orange #e64a19
+// - Dark Blue-Gray #263238
+// https://visme.co/blog/wp-content/uploads/2016/09/website16.jpg
+// https://www.pushing-pixels.org/2010/12/28/the-colors-of-tron-legacy.html
