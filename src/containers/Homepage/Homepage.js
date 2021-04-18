@@ -94,17 +94,19 @@ function Homepage() {
                                                         )
                                                     })}
                                             </div>
-                                            <div className="tag-placeholder">
-                                                <input
-                                                    placeholder="Placeholer"
-                                                    value={item.placeholderStr}
-                                                    onChange={(e) => {
-                                                        inputChange(state.itemList, index, e.target.value, setState)
-                                                    }}
-                                                ></input>
-                                            </div>
-                                            <div className="tag-add-button">
-                                                <button onClick={() => addTag(state.itemList, index, item.placeholderStr, setState)}>Add Tag</button>
+                                            <div className="tag-placeholder-wrap">
+                                                <div className="tag-placeholder">
+                                                    <input
+                                                        placeholder="Placeholer"
+                                                        value={item.placeholderStr}
+                                                        onChange={(e) => {
+                                                            inputChange(state.itemList, index, e.target.value, setState)
+                                                        }}
+                                                    ></input>
+                                                </div>
+                                                <div className="tag-add-button">
+                                                    <button onClick={() => addTag(state.itemList, index, item.placeholderStr, setState)}>Add Tag</button>
+                                                </div>
                                             </div>
                                         </div>
                                     )}
