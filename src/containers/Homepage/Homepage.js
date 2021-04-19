@@ -4,8 +4,7 @@ import Navigation from "../../components/Navigation/Navigation"
 import { useMergeState } from "../../utils/stateMerger"
 import { addTag, filterCriteria, removeTag, inputChange } from "./dataHelper"
 
-var localStorageName = "MOCKAROO_SAVED_STATE";
-
+var localStorageName = "MOCKAROO_SAVED_STATE"
 
 function Homepage() {
     const { state, setState } = useMergeState({
@@ -26,18 +25,18 @@ function Homepage() {
         }
         if (!savedStateLocal) {
             // if not saved then default to fetching data
-            
+
             // fetch data
             fetch("https://my.api.mockaroo.com/movies.json?key=bf3c1c60")
-            .then(function (response) {
-                return response.json()
-            })
-            .then(function (data) {
-                let dataJson = data
-                if (dataJson) {
-                    setState({ itemList: dataJson })
-                }
-            })
+                .then(function (response) {
+                    return response.json()
+                })
+                .then(function (data) {
+                    let dataJson = data
+                    if (dataJson) {
+                        setState({ itemList: dataJson })
+                    }
+                })
         } else {
             savedStateLocal = JSON.parse(savedStateLocal)
             setState(savedStateLocal)
@@ -70,6 +69,7 @@ function Homepage() {
                 <div className="data-list-wrap">
                     {state.itemList &&
                         state.itemList.map((item, index) => {
+                            let isItemTagSpaceAvailable = !item.tagList || (item.tagList && item.tagList.length < 5)
                             return (
                                 <div key={index}>
                                     {filterCriteria(item.tagList, state.searchStr) && (
@@ -82,7 +82,12 @@ function Homepage() {
                                                 {item.tagList &&
                                                     item.tagList.map((tagItem, tagIndex) => {
                                                         return (
-                                                            <div className={'tag-wrap ' + (state.searchStr && tagItem.indexOf(state.searchStr) != -1 ? 'matching-search' : '')} key={"tagItem_" + index}>
+                                                            <div
+                                                                className={
+                                                                    "tag-wrap " + (state.searchStr && tagItem.indexOf(state.searchStr) != -1 ? "matching-search" : "")
+                                                                }
+                                                                key={"tagItem_" + index}
+                                                            >
                                                                 <div className="tag-wrap-text">{tagItem}</div>
                                                                 <div className="tag-wrap-svg" onClick={() => removeTag(state.itemList, index, tagIndex, setState)}>
                                                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
@@ -95,17 +100,23 @@ function Homepage() {
                                                     })}
                                             </div>
                                             <div className="tag-placeholder-wrap">
-                                                <div className="tag-placeholder">
+                                                <div className={"tag-placeholder " + (!isItemTagSpaceAvailable ? "input-disabled" : "")}>
                                                     <input
-                                                        placeholder="Placeholer"
+                                                        disabled={!isItemTagSpaceAvailable}
+                                                        placeholder="Placeholder"
                                                         value={item.placeholderStr}
                                                         onChange={(e) => {
                                                             inputChange(state.itemList, index, e.target.value, setState)
                                                         }}
                                                     ></input>
                                                 </div>
-                                                <div className="tag-add-button">
-                                                    <button onClick={() => addTag(state.itemList, index, item.placeholderStr, setState)}>Add Tag</button>
+                                                <div className={"tag-add-button " + (!isItemTagSpaceAvailable ? "block-button" : "")}>
+                                                    <button
+                                                        disabled={!isItemTagSpaceAvailable}
+                                                        onClick={() => addTag(state.itemList, index, item.placeholderStr, setState)}
+                                                    >
+                                                        Add Tag
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

@@ -7,11 +7,11 @@ export const addTag = (dataList, index, tagName, refSetState) => {
     if (!tempItemList[index].tagList) {
         tempItemList[index].tagList = []
     }
-    if (tempItemList[index].tagList.length < 5) {
+    if (tempItemList[index].tagList.length < 5 && tagName && tagName != '') {
         tempItemList[index].tagList.push(tagName)
+        refSetState({ itemList: tempItemList });
     }
 
-    refSetState({ itemList: tempItemList });
 }
 
 export const removeTag = (dataList, index, tagIndex, refSetState) => {
